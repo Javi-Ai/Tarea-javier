@@ -15,7 +15,7 @@
         android:theme="@style/Theme.FormativaJavier"
         tools:targetApi="31">
         <activity
-            android:name=".DetalleUsuarioActivity"
+            android:name=".DetallePersonajeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

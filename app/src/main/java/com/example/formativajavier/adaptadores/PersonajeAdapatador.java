@@ -10,31 +10,31 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.formativajavier.R;
-import com.example.formativajavier.clases.Usuario;
+import com.example.formativajavier.clases.Personaje;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class UsuarioAdaptador extends RecyclerView.Adapter<UsuarioAdaptador.viewHolder> {
+public class PersonajeAdapatador extends RecyclerView.Adapter<PersonajeAdapatador.viewHolder> {
 
-    private List<Usuario> datos;
+    private List<Personaje> datos;
     private OnUsuarioClickListener listener;
 
-    public UsuarioAdaptador(List<Usuario> datos, OnUsuarioClickListener listener) {
+    public PersonajeAdapatador(List<Personaje> datos, OnUsuarioClickListener listener) {
         this.datos = datos;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public UsuarioAdaptador.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_usuario, parent, false);
+    public PersonajeAdapatador.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_personaje, parent, false);
         return new viewHolder(view, listener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuarioAdaptador.viewHolder holder, int position) {
-        Usuario dato = datos.get(position);
+    public void onBindViewHolder(@NonNull PersonajeAdapatador.viewHolder holder, int position) {
+        Personaje dato = datos.get(position);
         holder.bind(dato);
     }
 
@@ -44,30 +44,29 @@ public class UsuarioAdaptador extends RecyclerView.Adapter<UsuarioAdaptador.view
     }
 
     public static class viewHolder extends RecyclerView.ViewHolder {
-        TextView txt_nombre_usuario, txt_curso_usuario;
-        ImageView img_usuario;
+        TextView txt_nombre_personaje, txt_descripcion_personaje;
+        ImageView img_personaje;
 
         public viewHolder(@NonNull View itemView, OnUsuarioClickListener listener) {
             super(itemView);
-            txt_nombre_usuario = itemView.findViewById(R.id.txt_nombre_usuario);
-            txt_curso_usuario = itemView.findViewById(R.id.txt_curso_usuario);
-            img_usuario = itemView.findViewById(R.id.img_usuario);
+            txt_nombre_personaje = itemView.findViewById(R.id.txt_nombre_personaje);
+            txt_descripcion_personaje = itemView.findViewById(R.id.txt_descripcion_personaje);
+            img_personaje = itemView.findViewById(R.id.img_personaje);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
-                        listener.onUsuarioClick((Usuario) v.getTag());
+                        listener.onUsuarioClick((Personaje) v.getTag());
                     }
                 }
             });
         }
 
-        public void bind(Usuario dato) {
-            txt_nombre_usuario.setText(dato.getNombre());
-            txt_curso_usuario.setText(dato.getCurso());
-            Picasso.get().load(dato.getImagen()).into(img_usuario);
+        public void bind(Personaje dato) {
+            txt_nombre_personaje.setText(dato.getNombre());
+            Picasso.get().load(dato.getImagen()).into(img_personaje);
             itemView.setTag(dato);
         }
     }

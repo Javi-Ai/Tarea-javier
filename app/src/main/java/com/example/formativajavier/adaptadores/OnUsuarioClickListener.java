@@ -1,7 +1,7 @@
 package com.example.formativajavier.adaptadores;
 
-import com.example.formativajavier.clases.Usuario;
+import com.example.formativajavier.clases.Personaje;
 
 public interface OnUsuarioClickListener {
-    void onUsuarioClick(Usuario usuario);
+    void onUsuarioClick(Personaje personaje);
 }
